@@ -1,6 +1,6 @@
 #https://www.fastapitutorial.com/blog/serving-html-fastapi/
 
-#H1 Serving HTML with FastAPI #H1
+# H1 Serving HTML with FastAPI 
 ---
 Woahh, that was cool but I have a habit of developing monolithic web apps for a long time. So, if I don't see anything on the UI, it doesn't look good to me. So, what I am going to do next is to implement a navbar and a simple message on our homepage. I know FastAPI follows API first approach but just to satisfy my cravings I am going to serve a template in UI. The other thing is if someone hits our home/index endpoint they won't understand anything. So, the template is necessary. The second point I wrote just to justify me to myself !!
 
@@ -27,6 +27,7 @@ learning_fastapi/
 `
 Now, enter the below lines in 'route_homepage.py'.
 
+
 `
 #route_homepage.py
 
@@ -43,7 +44,6 @@ general_pages_router = APIRouter()
 @general_pages_router.get("/")
 async def home(request: Request):
 	return templates.TemplateResponse("general_pages/homepage.html",{"request":request})
-
 `
 
 - We imported the necessary modules.
