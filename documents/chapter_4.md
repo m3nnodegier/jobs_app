@@ -1,7 +1,7 @@
 #https://www.fastapitutorial.com/blog/fastapi-hello-world/
 
 Hello FastAPI
-----
+---
 Sorry, Dear, I talk a lot, and I tell my mistake from time to time but that's how it is going to be, I don't want it to be monotonous and full of instructions. If you are doing something you should know what happens if I don't do that. Enough talk let's jump into some code.
 
 First of all, create a new folder inside of learning_fastapi directory, named backend.
@@ -23,7 +23,7 @@ uvicorn
 
 It's time to taste fastapi, create a main.py file inside the backend folder, and type the following code, When I say type, I mean it, these are just 7-10 lines and you should type to get a better understanding of whats going on.
 
-Copy
+`
 #main.py
 
 from fastapi import FastAPI
@@ -35,6 +35,7 @@ app = FastAPI(title=settings.PROJECT_NAME,version=settings.PROJECT_VERSION)
 def hello_api():
     return {"msg":"Hello API"}
 `
+
 Now, let's understand what we did, We are creating an instance of FastAPI and initializing it with a title and a project version. Now, we can reference the 'app' as a fastapi class object and use it to create routes.
 
 - **@app.get('/')** is called a decorator. A decorator is used to provide extra functionality to a function. 
@@ -42,15 +43,16 @@ Now, let's understand what we did, We are creating an instance of FastAPI and in
 - **get** here is called a verb. There are HTTP verbs that determine the functionality allowed for a request. In this case, get means "A user may connect to this home route to retrieve some information."
 
 More on HTTP verbs:
-GET:  Requests using GET should only retrieve data.
+**GET**:  Requests using GET should only retrieve data.
 
-POST: The POST method is used to submit an entity to the specified resource, e.g. submitting a form.
+**POST**: The POST method is used to submit an entity to the specified resource, e.g. submitting a form.
 
-PUT: The PUT method is used to update a database table record.
+**PUT**: The PUT method is used to update a database table record.
 
-DELETE: The DELETE method deletes the specified resource.
+**DELETE**: The DELETE method deletes the specified resource.
 
 Okay back to our project. Notice that we are importing something from a config file from a folder named core.
+
 `
 ├─.gitignore
 └─backend/
@@ -59,7 +61,9 @@ Okay back to our project. Notice that we are importing something from a config f
   ├─main.py
   └─requirements.txt
 `
+
 We will store our project settings and configurations inside of this file named config.py.
+
 `
 #config.py
 
@@ -69,6 +73,7 @@ class Settings:
 
 settings = Settings()
 `
+
 Ok now this is the moment, let's start the uvicorn server, type `uvicorn main:app --reload`
 
 `
@@ -83,9 +88,12 @@ INFO:     127.0.0.1:50966 - "GET / HTTP/1.1" 200 OK
 INFO:     127.0.0.1:50966 - "GET /favicon.ico HTTP/1.1" 404 Not Found
 `
 
-The --reload flag is to tell that 'uvicorn please auto-reload the application, every time I save any file on my project'. Now, visit http://127.0.0.1:8000/ you should see 
+The --reload flag is to tell that 'uvicorn please auto-reload the application, every time I save any file on my project'. Now, visit http://127.0.0.1:8000/ you should see :
+
 `
 {"msg":"Hello API"}
 `
+
 Also, feel free to explore http://127.0.0.1:8000/docs.
+
 Hurreyyy, Nothing big but life is in partying in small things. Sayonara, for now, I am going to have some sandwiches with my friends
