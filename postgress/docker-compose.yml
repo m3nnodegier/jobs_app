@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  db:
+    container_name: database
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: mdegier
+      POSTGRES_PASSWORD: mdegier
+      POSTGRES_DB: test_db
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+        - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+      
+  pgadmin:
+    container_name: dbadmin
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "8082:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin  
+           
+volumes:
+  db-data:
+      name: postgress_db_data
+  pgadmin-data:
+      name: pg_db_admindata
+#  $ docker volume ls
+#  DRIVER    VOLUME NAME
+#  local     pg_db_admindata
+#  local     postgress_db_data
+#  $

@@ -95,3 +95,5 @@ Ok, now let's modify our navbar.html file to have a brand image.
 `
 
 Now, you should have a logo in the navbar.
+
+
