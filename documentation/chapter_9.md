@@ -140,3 +140,13 @@ def create_tables():
 
 Ok, time to restart the uvicorn server. Now, check your db tables. In case you are using SQLite use a tool named Downloads - DB Browser for SQLite (sqlitebrowser.org). Postgres guys refresh the tables in PgAdminDownload (pgadmin.org) and you should see the tables.
 
+`
+(venvjobsapp) mdegier@N-20HJPF17PGRN:/mnt/c/Users/mdegier/Documents/docker_lab/fastapi/jobs_app$ uvicorn main:app --reload
+INFO:     Will watch for changes in these directories: ['/mnt/c/Users/mdegier/Documents/docker_lab/fastapi/jobs_app']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [15195] using StatReload
+create_tables
+INFO:     Started server process [15197]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+`

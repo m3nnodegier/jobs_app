@@ -1,5 +1,8 @@
 # https://www.fastapitutorial.com/blog/technology-stack/
 
+# the structure
+---
+
 Frontend: We will be utilizing Jinja2 as our templating engine. And HTML, CSS, Bootstrap will drive our frontend goals.
 
 API: FastAPI will drive our API, we will be following good software development principles e.g. Test-Driven Development, versioning of code, Clean code principles to some extent.
@@ -13,3 +16,4 @@ sqlalchemy: Say, you develop an application with Postgresql. Now, you give your 
 Alembic: We will meet alembic at the last few episodes, It is like git for the database! We make a table, now we want to revert some changes in our table, then we can use it.
 
 Postgresql: Production grade database to store data. Feel free to use any other database and in case you don't want to install Postgres for whatsoever reason. We can use SQLite, It is a file-based lightweight database.
+---

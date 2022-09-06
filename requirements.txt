@@ -11,5 +11,8 @@ aiofiles
 sqlalchemy         
 psycopg2-binary # replacing-> psycopg2
 
-#for loading environment variables  #new
+#for loading environment variables 
 python-dotenv
+
+#for email validation            #new
+pydantic[email] 
