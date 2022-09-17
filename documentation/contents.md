@@ -13,4 +13,6 @@ https://www.fastapitutorial.com/blog/fastapi-course/
 - Creating tables in FastAPI
 - Creating Schemas in Fastapi
 
+- Dockerize everything
+
 
