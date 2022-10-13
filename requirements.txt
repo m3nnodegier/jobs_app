@@ -16,3 +16,10 @@ python-dotenv
 
 #for email validation            #new
 pydantic[email] 
+
+# documentation with sphinx
+# sphinx
+sphinx
+sphinx-rtd-theme
+sphinxcontrib-ansibleautodoc
+sphinxcontrib-websupport
