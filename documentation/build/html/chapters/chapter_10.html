@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10. Creating Schemas in Fastapi &mdash; jobsapp 1.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Dockerize the application and database" href="chapter_11.html" />
+    <link rel="prev" title="9. Creating tables in FastAPI" href="chapter_9.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> jobsapp
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="adddocumentation.html">Documentation Using sphinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_1.html">1. The structure of Jobsapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_2.html">2. what are we going to build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_3.html">3. Initial Project Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_4.html">4. Hello FastAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_5.html">5. Serving HTML with FastAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_6.html">6. Lets have anavbar!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_7.html">7. Serving Static Files with FastAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_8.html">8. FastAPI Connecting to a Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_9.html">9. Creating tables in FastAPI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. Creating Schemas in Fastapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_11.html">11. Dockerize the application and database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter_12.html">12. Understanding Dependencies in FastAPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">jobsapp</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>10. Creating Schemas in Fastapi</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/chapter_10.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="creating-schemas-in-fastapi">
+<h1>10. Creating Schemas in Fastapi<a class="headerlink" href="#creating-schemas-in-fastapi" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://www.fastapitutorial.com/blog/schemas-in-fastapi/">https://www.fastapitutorial.com/blog/schemas-in-fastapi/</a></p>
+<p>Remember the request-response cycle in the previous post? Ok, let’s revise, A schema is used to validate data we receive as well as to reformat the data that we want to send to the client/browser. Suppose, we want to receive a JSON like {‘username’:’testuser’,’email’:<a class="reference external" href="mailto:'testuser&#37;&#52;&#48;nofoobar&#46;com">’testuser<span>&#64;</span>nofoobar<span>&#46;</span>com</a>’,’password’:’testing’} but there is no way we ca trust  our users. Our users may send anything they want and we don’t want to store it without verifying. e.g. {‘username’:’testuser’,’email’:’1234’,’password’:’testing’} Notice here email is 1234, in such cases, we want to notify our users that we can’t store such shit ! For this, we can go the hard way but we have Pydantic for our rescue. We create pydantic classes that verify the types and these classes are called Schemas. Let’s jump into it and see it in action. Before that let’s create files and folders to hold schemas.</p>
+<p>`
+(venvjobsapp) <a class="reference external" href="mailto:mdegier&#37;&#52;&#48;N-20HJPF17PGRN">mdegier<span>&#64;</span>N-20HJPF17PGRN</a>:/mnt/c/Users/mdegier/Documents/docker_lab/fastapi/jobs_app$ tree
+.
+├── README.txt
+├── __pycache__
+│   └── main.cpython-38.pyc
+├── apis
+│   └── general_pages
+│       ├── __pycache__
+│       │   └── route_homepage.cpython-38.pyc
+│       └── route_homepage.py
+├── core
+│   ├── __pycache__
+│   │   └── config.cpython-38.pyc
+│   └── config.py
+├── db
+│   ├── __pycache__
+│   │   ├── base.cpython-38.pyc
+│   │   ├── base_class.cpython-38.pyc
+│   │   └── session.cpython-38.pyc
+│   ├── base.py
+│   ├── base_class.py
+│   ├── models
+│   │   ├── __pycache__
+│   │   │   ├── jobs.cpython-38.pyc
+│   │   │   └── users.cpython-38.pyc
+│   │   ├── jobs.py
+│   │   └── users.py
+│   └── session.py
+├── documentation
+│   ├── chapter_1.md
+│   ├── chapter_10.md
+│   ├── chapter_2.md
+│   ├── chapter_3.md
+│   ├── chapter_4.md
+│   ├── chapter_5.md
+│   ├── chapter_6.md
+│   ├── chapter_7.md
+│   ├── chapter_8.md
+│   └── chapter_9.md
+├── main.py
+├── postgress
+│   └── docker-compose.yml
+├── requirements.txt
+├── schemas
+│   ├── jobs.py
+│   └── users.py
+├── static
+│   └── images
+│       ├── BAO_big.png
+│       ├── lenyfavicon.ico
+│       └── lenyicon.png
+└── templates</p>
+<blockquote>
+<div><p>├── components
+│   └── navbar.html
+├── general_pages
+│   └── homepage.html
+└── shared</p>
+<blockquote>
+<div><p>└── base.html</p>
+</div></blockquote>
+</div></blockquote>
+<p>19 directories, 37 files
+(venvjobsapp) <a class="reference external" href="mailto:mdegier&#37;&#52;&#48;N-20HJPF17PGRN">mdegier<span>&#64;</span>N-20HJPF17PGRN</a>:/mnt/c/Users/mdegier/Documents/docker_lab/fastapi/jobs_app$
+`</p>
+<p>Now, it’s time to create the pydantic classes i.e. schemas. Let’s start with users schemas. Type in the following code in <strong>schemas &gt; users.py</strong></p>
+<p>`
+from typing import Optional
+from pydantic import BaseModel,EmailStr</p>
+<p>#properties required during user creation
+class UserCreate(BaseModel):</p>
+<blockquote>
+<div><p>username: str
+email : EmailStr
+password : str</p>
+</div></blockquote>
+<p><a href="#id1"><span class="problematic" id="id2">`</span></a></p>
+<p>Let’s understand this dark magic! We are inheriting BaseModel from pydantic. It empowers fastapi to suggest validation errors to users. In this case, whenever we want to create a user, we will receive data in JSON format where the username will be verified to be a string, the email will be verified to be in proper mail format and the password will be validated to be a string.</p>
+<p>Because we are trying to use EmailStr from pydantic we need to install this service first. Let’s add pydantic[email] to our requirements.txt file and install all requirements by pip install -r requirements.txt.</p>
+<p>`
+#for loading environment variables
+python-dotenv</p>
+<p>#for email validation            #new
+pydantic[email]
+`</p>
+<p>Schemas will be clearer when we will use schemas in our routes.</p>
+<p>See next will be to understand the schema’s, but first the dependencies</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chapter_9.html" class="btn btn-neutral float-left" title="9. Creating tables in FastAPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chapter_11.html" class="btn btn-neutral float-right" title="11. Dockerize the application and database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Menno de Gier.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

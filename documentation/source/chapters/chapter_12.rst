@@ -1,6 +1,7 @@
-https://www.fastapitutorial.com/blog/dependencies-in-fastapi/
+12. Understanding Dependencies in FastAPI
+=========================================
 
-# Understanding Dependencies in FastAPI
+https://www.fastapitutorial.com/blog/dependencies-in-fastapi/
 
 Dependency injection is a beautiful concept. I won't torture you with big words, let's understand it with a simple example. You should be knowing that we use a test database to run our unit test and a production/development database. Can you imagine what would happen if we use the same database everywhere? Yes, our database will become a mess in few weeks! It would be filled up with useless emails like - test@example.com, mycutetest@test.com, and so on!
 

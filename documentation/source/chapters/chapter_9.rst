@@ -1,6 +1,7 @@
+9. Creating tables in FastAPI
+===============================
 https://www.fastapitutorial.com/blog/creating-tables-in-fastapi/
 
-# Creating tables in FastAPI
 
 Before We talk about databases tables and all, I want to share a very simplistic view of FastAPI request-response cycle. A request-response cycle basically means to understand what happens in between, the browser makes a request and FastAPI sends backs a response. It is actually a very popular interview question. During my freshers' job search, I was asked this question around 90% of the time. "Explain the request-response cycle of Django?".
 This will also help us where does database connection comes into play and why we need to create and connect with DB tables.

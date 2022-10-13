@@ -1,7 +1,8 @@
-# https://www.fastapitutorial.com/blog/technology-stack/
+1. The structure of Jobsapp
+===============================
 
-# the structure
----
+source: https://www.fastapitutorial.com/blog/technology-stack/
+
 
 Frontend: We will be utilizing Jinja2 as our templating engine. And HTML, CSS, Bootstrap will drive our frontend goals.
 

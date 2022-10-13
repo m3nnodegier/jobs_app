@@ -1,6 +1,8 @@
+8. FastAPI Connecting to a Database
+===================================
 # https://www.fastapitutorial.com/blog/database-connection-fastapi/
 
-# FastAPI Connecting to a Database
+# 
 
 Super, So, far we have done a lot. Now, its time to add persistence. We are going to connect a database to our app. I am opting for PostgreSQL. I would suggest you to try out Postgres as it is a production-grade db. If you already have it, well and good, If not, download Postgres and PgAdmin(for monitoring Postgres). In case you just want to play and learn on your local computer, You may skip downloading Postgres. We can use SQLite, It is a file system based, easy-to-use database and is supported by python.
 

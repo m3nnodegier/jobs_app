@@ -1,7 +1,9 @@
+3. Initial Project Configuration
+===============================
 
-# https://www.fastapitutorial.com/blog/initial-configuration/
+source: https://www.fastapitutorial.com/blog/initial-configuration/
 
-# Initial Project Configuration
+
 ---
 Have a virtualenv: First things first, We need a virtual environment, A virtual environment is like a separate space wherein we can install our project requirements which is completely isolated from the global installations. Years back, When I was starting with Django, I used to install some requirements for some project(x) e.g. 
 

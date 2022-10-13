@@ -1,6 +1,9 @@
+7. Serving Static Files with FastAPI
+====================================
+
 #https://www.fastapitutorial.com/blog/static-files-fastapi/
 
-# Serving Static Files with FastAPI
+
 
 Ok, the navbar was good, but something is missing,our brand logo, no? In this post, we will be adding an image/logo to our navbar. Before that lets understand static and media files in a hurry. When we fill a form, say a form that asks for an image upload from a computer. Then the image uploaded by us is called a media.
 But when a webpage shows us an image or provides CSS, js file to the browser, it's a static file. Ok, now lets add a our logo to navbar. For serving static files, we will make use of a library named aiofiles. Lets add this to our requirements.txt file.

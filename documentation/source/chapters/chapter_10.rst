@@ -1,6 +1,8 @@
+10. Creating Schemas in Fastapi
+==============================
 https://www.fastapitutorial.com/blog/schemas-in-fastapi/
 
-# Creating Schemas in Fastapi
+
 
 Remember the request-response cycle in the previous post? Ok, let's revise, A schema is used to validate data we receive as well as to reformat the data that we want to send to the client/browser. Suppose, we want to receive a JSON like {'username':'testuser','email':'testuser@nofoobar.com','password':'testing'} but there is no way we ca trust  our users. Our users may send anything they want and we don't want to store it without verifying. e.g. {'username':'testuser','email':'1234','password':'testing'} Notice here email is 1234, in such cases, we want to notify our users that we can't store such shit ! For this, we can go the hard way but we have Pydantic for our rescue. We create pydantic classes that verify the types and these classes are called Schemas. Let's jump into it and see it in action. Before that let's create files and folders to hold schemas.
 
