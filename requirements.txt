@@ -7,19 +7,24 @@ jinja2
 #for static files
 aiofiles
 
-#for database   #new
+#for database
 sqlalchemy         
 psycopg2-binary # replacing-> psycopg2
 
 #for loading environment variables 
 python-dotenv
 
-#for email validation            #new
+#for email validation
 pydantic[email] 
+
+#hashing
+passlib[bcrypt]
 
 # documentation with sphinx
 # sphinx
+docutils<0.18
 sphinx
 sphinx-rtd-theme
 sphinxcontrib-ansibleautodoc
 sphinxcontrib-websupport
+myst-parser

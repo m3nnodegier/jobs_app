@@ -27,7 +27,7 @@ COPY ./requirements.txt /app/requirements.txt
 # Install the package dependencies in the requirements file.
 # The --no-cache-dir option tells pip to not save the downloaded packages locally, as that is only if pip was going to be run again to install the same packages, but that's not the case when working with containers.
 # The --upgrade option tells pip to upgrade the packages if they are already installed.
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the ./app directory inside the /app directory.
 # As this has all the code which is what changes most frequently the Docker cache won't be used for this or any following steps easily.
@@ -105,14 +105,14 @@ volumes:
 #  $
 ``
 
-Start the creationof the application image and docker files:
+Start the creation of the application image and docker files:
 
 ``
 docker-compose up -d --build
 ``
 
 This will do the following:
-- downlaod the required docker images for postgres, pgadmin and python
+- download the required docker images for postgres, pgadmin and python
 -  build the application image base upon the pyton image as specified in the Dockerfile
 -  Docker must have something to do, otherwise the docker-app will stop. The last entry in the Dockerfile is a run command to start uvicorn. We are using the --reload option to make the application restart itself when there is a change in the code.
 -  The application folder is mounted to the docker container 
@@ -160,3 +160,22 @@ $
 
 
 Last thing-> save to git !!!!!!!!
+
+# Note
+In case docker-compose will not work, you may start the docker contaner youselfs with:
+``
+docker run -it --rm --name test python:3.9 bash
+``
+
+Run in the case where the composer wasn't able to install requirements file with the following error:
+``
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x7f7554e7ec70>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution')': /simple/fastapi/
+``
+
+Connecting to a alpine container use:
+``
+ docker run -it --rm --name test alpine:3.14 /bin/sh
+``
+
+What did solve the issue above? 
+Really, i don't know, but rebooted my PC twice and checked the vEthernet status. Sometime this was 169...., but when it is working it is 172.23.16.1

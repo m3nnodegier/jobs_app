@@ -23,5 +23,8 @@ Welcome to jobsapp's documentation!
    chapters/chapter_10
    chapters/chapter_11
    chapters/chapter_12
+   chapters/chapter_13
+   chapters/chapter_14
+
 
 Last change: |today|
